@@ -147,12 +147,18 @@
 						$message._hide();
 
 					// Disable submit.
-						$submit.disabled = true;
+						$submit.disabled = false;
 
 					// Process form.
 					// Note: Doesn't actually do anything yet (other than report back with a "thank you"),
 					// but there's enough here to piece together a working AJAX submission call that does.
 						window.setTimeout(function() {
+
+							var xhttp = new XMLHttpRequest();
+							xhttp.open("POST", "store_emails.php", true);
+							xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+							xhttp.send("email=" + document.getElementById('email').value); 
+
 
 							// Reset form.
 								$form.reset();
